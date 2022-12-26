@@ -4,9 +4,9 @@
 using namespace std;
 
 //Функция для тоси-боси записи файла
-int writeFile(double ** arr){
+void writeFile(double ** arr){
 
-  std::ofstream outstream;
+  ofstream outstream;
   outstream.open("result.txt");
   if(outstream.is_open()){
     for(int i=0; i<3;i++){
@@ -16,6 +16,7 @@ int writeFile(double ** arr){
     outstream<<endl;
   }
   }
+  cout<<"File result.txt writing successfull"<<endl;  
 }
 
 int main()
@@ -79,6 +80,8 @@ int main()
 
     //Выведем матрицу
 
+    cout<<"File source.txt reading successfull"<<endl;
+
     cout<<"Before editing matrix: "<<endl;
 
     for (int i = 0; i < n; i++)
@@ -122,10 +125,20 @@ int main()
     matrix[max_index[0]][max_index[1]]=summ;
 
 
+    cout<<"Matrix after summing function: "<<endl;
+
+    for (int i = 0; i < n; i++)
+    {
+      for (int j = 0; j < m; j++)
+        cout << matrix[i][j] << "\t";
+      cout << "\n";
+    }
 
     //Запишем в файл результат работы
 
     writeFile(matrix);
+
+    
 
 
     in.close();//под конец закроем файла
